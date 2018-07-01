@@ -1,0 +1,51 @@
+
+.stickynotes{
+    height: 80%;
+    width: 40%;
+    top: 10%;
+    left: 30%;
+    position: absolute;
+    font-family:arial,sans-serif;
+    font-size:100%;
+    margin:3em;
+ 
+    font-size:100%;
+    font-weight:normal;
+    list-style:none;
+    color:#000;
+    background:#ffc;
+    display:block;
+  }
+ 
+#usrform{
+    margin: 20PX;
+}
+
+textarea{
+ 
+line-height: 1.5em;
+   border: none;
+   background:#ffc;
+   font-size: 20px;
+   resize: none;
+   background-attachment: local;
+   background-image:
+   linear-gradient(to right, #ffc 5px, transparent 5px),
+   linear-gradient(to left, #ffc 5px, transparent 5px),
+   repeating-linear-gradient(#ffc, #ffc 30px, #ccc 30px, #ccc 31px, white 31px);
+   line-height: 31px;
+   padding: 8px 10px;
+}
+#summary{
+    background:#ffc;
+ }
+ #color{
+     margin-left: 90%;
+ }
+
+ #start {
+     float: right;
+     margin-right: -200px;
+     width: 80%;
+ }
+

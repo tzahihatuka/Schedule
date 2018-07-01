@@ -1,0 +1,51 @@
+<div class="stickynotes">
+
+  <div *ngFor="let event of events; let index = index">
+      <input
+      id="summary"
+      placeholder="summary"
+        type="text"
+        class="form-control"
+        [(ngModel)]="event.summary"
+        (keyup)="refresh.next()">
+    
+      <textarea rows="15" cols="90" class="form-control"
+      placeholder="input text"
+      [(ngModel)]="event.text"
+      (keyup)="refresh.next()">
+      
+    </textarea>
+    
+      <input
+      id="color"
+        type="color"
+        [(ngModel)]="event.color"
+        (change)="refresh.next()">
+
+        <mwl-demo-utils-date-time-picker
+        id="start" 
+        [(ngModel)]="event.end"
+        (ngModelChange)="refresh.next()"
+        placeholder="Not set">
+      </mwl-demo-utils-date-time-picker>
+      <mwl-demo-utils-date-time-picker 
+      
+        [(ngModel)]="event.start"
+        (ngModelChange)="refresh.next()"
+        placeholder="Not set">
+      </mwl-demo-utils-date-time-picker>
+    
+      
+    
+      <button 
+        class="btn btn-primary"
+        (click)="addEvent(); refresh.next()">
+        ADD
+      </button>
+  
+
+
+</div>
+</div> 
+
+
