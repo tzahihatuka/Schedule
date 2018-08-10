@@ -53,43 +53,63 @@ export class RealnoteComponent {
           summary: this.note.eventclicked[0].summary,
           text:this.note.eventclicked[0].title,
           color: this.note.eventclicked[0].color,
-          id:this.note.eventclicked[0].id
+          id:this.note.eventclicked[0].id=0
         }
       ];
     }
     
-    this.bb.getInfo().subscribe(res =>{this.eve=(res)});
+   // this.bb.getInfo().subscribe(res =>{this.eve=(res)});
   }
 
 
   addToArray(){
-    this.bb.pustInfo(this.eve).subscribe(event1=>{ this.eve.push(event1)});
+  localStorage.setItem('currentUser', JSON.stringify({
+    id:this.eve.length+1,
+    title: this.events[0].summary,
+    summary:this.events[0].text,
+    start: this.events[0].start,
+    end: this.events[0].end,
+    actions: [
+      {
+          "label": "<i class=\"fa fa-fw fa-pencil\"></i>"
+      },
+      {
+          "label": "<i class=\"fa fa-fw fa-times\"></i>"
+      }
+  ],
+  color: {
+    "primary": this.events[0].color,
+    "secondary": "#FAE3E3"
+},
+  }));
+   // this.bb.pustInfo(this.eve).subscribe(event1=>{ this.eve.push(event1)});
   }
   
   addEvent(): void {
-    console.log(this.eve.id);
-    this.eve.push({
-      id:this.eve.length+1,
-      title: this.events[0].summary,
-      summary:this.events[0].text,
-      start: this.events[0].start,
-      end: this.events[0].end,
-      actions: [
-        {
-            "label": "<i class=\"fa fa-fw fa-pencil\"></i>"
-        },
-        {
-            "label": "<i class=\"fa fa-fw fa-times\"></i>"
-        }
-    ],
-    color: {
-      "primary": this.events[0].color,
-      "secondary": "#FAE3E3"
-  },
-    });
-
-    this.refresh.next();
     this.addToArray();
+  console.log(this.eve.id);
+ //   this.eve.push({
+ //     id:this.eve.length+1,
+ //     title: this.events[0].summary,
+ //     summary:this.events[0].text,
+ //     start: this.events[0].start,
+ //     end: this.events[0].end,
+ //     actions: [
+ //       {
+ //           "label": "<i class=\"fa fa-fw fa-pencil\"></i>"
+ //       },
+ //       {
+ //           "label": "<i class=\"fa fa-fw fa-times\"></i>"
+ //       }
+ //   ],
+ //   color: {
+ //     "primary": this.events[0].color,
+ //     "secondary": "#FAE3E3"
+ // },
+ //   });
+//
+ //   this.refresh.next();
+  //  this.addToArray();
   }
 
 }

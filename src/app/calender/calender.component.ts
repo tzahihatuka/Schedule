@@ -22,12 +22,22 @@ import { selected } from '../shared/services/selectEvent';
   styleUrls: ['./calender.component.css']
 })
 
-export class CalenderComponent implements OnInit {
+export class CalenderComponent  {
   
-  public getdata1:CalendarEvent={};
+  public getdata1:any=[{}];
   public events : CalendarEvent[]=[]
   constructor(public bb:importdata,private modal: NgbModal,public note:selected) {
-    this.bb.getInfo().subscribe(res =>{this.getdata1=res;console.log(this.events)});
+    this.getdata1=[JSON.parse(localStorage.getItem('currentUser'))];
+    for(let item in this.getdata1)
+    this.events.push({
+      title: this.getdata1[item].title,
+      start: new Date(this.getdata1[item].start) ,
+      end: new Date(this.getdata1[item].end),
+      color: this.getdata1[item].color,
+      id:this.getdata1[item].id
+    });
+    console.log(this.events);
+    //this.bb.getInfo().subscribe(res =>{this.getdata1=res;console.log(this.events)});
   }
 
 
@@ -86,16 +96,16 @@ export class CalenderComponent implements OnInit {
   handleEvent(action: string, event: CalendarEvent): void {
     this.note.getEventData(event.id)
   }
-  ngOnInit() { setTimeout(()=>{for(let item in this.getdata1){
-    this.events.push({
-    title: this.getdata1[item].title,
-    start: new Date(this.getdata1[item].start) ,
-    end: new Date(this.getdata1[item].end),
-    color: this.getdata1[item].color,
-    id:this.getdata1[item].id
-  });}
-  console.log(this.events);
-  this.refresh.next(); }, 1000);
-  }
+  //   ngOnInit() {for(let item in this.getdata1[0]){
+  //  this.events.push({
+  //  title: this.getdata1[item].title,
+  //  start: new Date(this.getdata1[item].start) ,
+  //  end: new Date(this.getdata1[item].end),
+  //  color: this.getdata1[item].color,
+  //  id:this.getdata1[item].id
+  //});}
+ // 
+ // console.log(this.events);
+ // }
   
 }

@@ -6,9 +6,11 @@ import { importdata } from "src/app/shared/services/importdata";
 @Injectable()
 export class selected{
 public clicked:boolean=false;
-public getdata1:CalendarEvent={};
+public getdata1:any=[{}];
 public eventclicked:Array<any>=[];
 constructor(public bb:importdata) {
+    this.getdata1=[JSON.parse(localStorage.getItem('currentUser'))];
+   
     this.bb.getInfo().subscribe(res =>{this.getdata1=res;});
     
   }
